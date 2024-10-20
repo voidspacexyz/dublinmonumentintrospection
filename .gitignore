@@ -128,3 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+wikipedia_downloader/venv/
+wikipedia_downloader/__pycache__
