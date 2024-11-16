@@ -59,21 +59,15 @@ fetch("/sourcedata.csv")
         email,
         latitude,
         longitude,
-        description,
-        onMap,
-        type,
-        category,
-        dcfacility,
-        naceCode,
-        neighbourhood,
-        dccAreaPre2019,
-        dccAreaPost2019,
         wikiLink,
+        description,
+        year,
       ] = rows[i].split(",");
 
       monuments.push({
         id: i,
         name: name,
+        description: (description + "," + year).replace(/"/g, ""),
         lat: parseFloat(latitude),
         lng: parseFloat(longitude),
         wiki: wikiLink,
@@ -329,6 +323,7 @@ function updateNearbyStops(monument, filterDistance) {
 
   let popupContent = `
       <h3>${monument.name}</h3>
+      <p>${monument.description} </p>
       ${monument.wiki ? `<a href="${monument.wiki}" target="_blank">Wikipedia</a>` : "Wikipedia: NA"}
       <h4>Nearby Stops:</h4>
       <ul>
