@@ -1,90 +1,88 @@
 // Initialize the map
 const map = L.map("map").setView([53.3498, -6.2603], 16);
 
+var monumentIcon = L.icon({
+  iconUrl: "monument.png",
+
+  iconSize: [40, 60], // size of the icon
+  shadowSize: [50, 64], // size of the shadow
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62], // the same for the shadow
+  popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+});
+var tramIcon = L.icon({
+  iconUrl: "tram.png",
+
+  iconSize: [40, 60], // size of the icon
+  shadowSize: [50, 64], // size of the shadow
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62], // the same for the shadow
+  popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+});
+var dartIcon = L.icon({
+  iconUrl: "dart.png",
+
+  iconSize: [40, 60], // size of the icon
+  shadowSize: [50, 64], // size of the shadow
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62], // the same for the shadow
+  popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+});
+var busIcon = L.icon({
+  iconUrl: "bus.png",
+
+  iconSize: [40, 60], // size of the icon
+  shadowSize: [50, 64], // size of the shadow
+  iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+  shadowAnchor: [4, 62], // the same for the shadow
+  popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+});
+
 // Add the OpenStreetMap tile layer
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "© OpenStreetMap contributors",
 }).addTo(map);
 
-const monuments = [
-  {
-    id: 1,
-    name: "Molly Malone",
-    lat: 53.3439,
-    lng: -6.2632,
-    wiki: "https://en.wikipedia.org/wiki/Molly_Malone",
-  },
-  {
-    id: 2,
-    name: "Daniel O'Connell",
-    lat: 53.3498,
-    lng: -6.2603,
-    wiki: "https://en.wikipedia.org/wiki/Daniel_O%27Connell",
-  },
-  {
-    id: 3,
-    name: "James Larkin",
-    lat: 53.3498,
-    lng: -6.2597,
-    wiki: "https://en.wikipedia.org/wiki/James_Larkin",
-  },
-  {
-    id: 4,
-    name: "William Smith O'Brien",
-    lat: 53.349,
-    lng: -6.261,
-    wiki: "None",
-  },
-  {
-    id: 5,
-    name: "Famine Memorial",
-    lat: 53.3478,
-    lng: -6.2469,
-    wiki: "None",
-  },
-  {
-    id: 6,
-    name: "Margaret Ball & Francis Taylor",
-    lat: 53.3441,
-    lng: -6.2674,
-    wiki: "None",
-  },
-  {
-    id: 7,
-    name: "Queen Maeve",
-    lat: 53.3442,
-    lng: -6.2675,
-    wiki: "None",
-  },
-  {
-    id: 8,
-    name: "Oscar Wilde",
-    lat: 53.335,
-    lng: -6.25,
-    wiki: "https://en.wikipedia.org/wiki/Oscar_Wilde",
-  },
-  {
-    id: 9,
-    name: "James Connolly",
-    lat: 53.3481,
-    lng: -6.2484,
-    wiki: "https://en.wikipedia.org/wiki/James_Connolly",
-  },
-  {
-    id: 10,
-    name: "Cú Chulainn",
-    lat: 53.348,
-    lng: -6.253,
-    wiki: "None",
-  },
-  {
-    id: 11,
-    name: "Constance Markievicz",
-    lat: 53.3448,
-    lng: -6.2475,
-    wiki: "None",
-  },
-];
+const monuments = [];
+fetch("/sourcedata.csv")
+  .then((response) => response.text())
+  .then((data) => {
+    // Parse the CSV data
+    const rows = data.trim().split("\n");
+    const monuments = [];
+
+    for (let i = 1; i < rows.length; i++) {
+      const [
+        name,
+        website,
+        phone,
+        email,
+        latitude,
+        longitude,
+        description,
+        onMap,
+        type,
+        category,
+        dcfacility,
+        naceCode,
+        neighbourhood,
+        dccAreaPre2019,
+        dccAreaPost2019,
+        wikiLink,
+      ] = rows[i].split(",");
+
+      monuments.push({
+        id: i,
+        name: name,
+        lat: parseFloat(latitude),
+        lng: parseFloat(longitude),
+        wiki: wikiLink,
+      });
+    }
+
+    populate_monuments(monuments);
+  })
+  .catch((error) => console.error("Error:", error));
 
 const busStops = [
   {
@@ -343,49 +341,49 @@ function updateNearbyStops(monument, filterDistance) {
 }
 
 // Add monuments to the map
-monuments.forEach((monument) => {
-  L.marker([monument.lat, monument.lng])
-    .addTo(map)
-    .on("click", function (e) {
-      selectedMonument = monument;
-      const filterDistance = document.getElementById("distance").value;
-      const popupContent = updateNearbyStops(monument, filterDistance);
-      this.bindPopup(popupContent).openPopup();
+function populate_monuments(monuments) {
+  monuments.forEach((monument) => {
+    L.marker([monument.lat, monument.lng], { icon: monumentIcon })
+      .addTo(map)
+      .on("click", function (e) {
+        selectedMonument = monument;
+        const filterDistance = document.getElementById("distance").value;
+        const popupContent = updateNearbyStops(monument, filterDistance);
+        this.bindPopup(popupContent).openPopup();
 
-      if (filterCircle) {
-        map.removeLayer(filterCircle);
-      }
-      filterCircle = L.circle([monument.lat, monument.lng], {
-        radius: filterDistance,
-        fillColor: "blue",
-        fillOpacity: 0.1,
-        color: "blue",
-      }).addTo(map);
-    });
-});
+        if (filterCircle) {
+          map.removeLayer(filterCircle);
+        }
+        filterCircle = L.circle([monument.lat, monument.lng], {
+          radius: filterDistance,
+          fillColor: "orange",
+          // fillOpacity: 0.1,
+          color: "orange",
+        }).addTo(map);
+      });
+  });
+}
 
-// Add bus stops to the map
 busStops.forEach((stop) => {
   let color;
+  let icon;
   if (stop.type === "dart") {
     color = "green";
+    icon = dartIcon;
   } else if (stop.type === "bus") {
     color = "blue";
+    icon = busIcon;
   } else if (stop.type === "luas") {
     color = "red";
+    icon = tramIcon;
   } else {
     color = "gray"; // default color for unknown types
+    icon = L.icon({
+      iconUrl: "path/to/default-icon.png",
+      // Other icon options
+    });
   }
-  L.circleMarker([stop.lat, stop.lng], {
-    radius: 5,
-    fillColor: color,
-    color: color,
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.8,
-  })
-    .addTo(map)
-    .bindPopup(stop.name);
+  L.marker([stop.lat, stop.lng], { icon: icon }).addTo(map);
 });
 
 // Add event listener for filter distance change
