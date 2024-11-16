@@ -18,8 +18,17 @@ def format_wikipedia_content(soup):
     # Extract the main content of the page
     content_div = soup.find('div', {'id': 'bodyContent'})
 
-    # Loop through the elements within the main content
+    # Find the last section before the References or Further reading sections
+    last_section = None
+    for element in content_div.find_all(['h2', 'h3']):
+        if element.get_text().lower() in ['references', 'further reading','see also','notes and references','bibliography']:
+            break
+        last_section = element
+
+    # Loop through the elements within the main content, up to the last section
     for element in content_div.find_all(['h2', 'h3', 'p', 'ul', 'ol']):
+        if element == last_section:
+            break
         if element.name == 'h2' or element.name == 'h3':
             # Format headers (h2 and h3)
             header = element.get_text().strip()
@@ -36,6 +45,7 @@ def format_wikipedia_content(soup):
             formatted_content.append("\n")
 
     return "\n".join(formatted_content)
+
 
 
 def download_wikipedia_content(csv_file):
