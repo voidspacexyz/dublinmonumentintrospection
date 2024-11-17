@@ -1,4 +1,64 @@
 Name,Hits,Filenames
+lea,1,8.txt
+james,8,8.txt
+hamilton,5,8.txt
+desmond tralee kerry,1,8.txt
+taoiseach,1,8.txt
+tudor,1,8.txt
+henry vii,1,8.txt
+henry viii,2,8.txt
+edward vi,2,8.txt
+mary,3,8.txt
+elizabeth,5,8.txt
+crown,1,8.txt
+stuarts,2,8.txt
+margaret m. james iv,1,8.txt
+tudors,1,8.txt
+james vi,2,8.txt
+james i of,1,8.txt
+fitzgeralds,1,8.txt
+munster,3,8.txt
+oliver cromwell,1,8.txt
+hugh o’neill,1,8.txt
+earl,1,8.txt
+philip ii,1,8.txt
+ople,1,8.txt
+lough,1,8.txt
+foyle,1,8.txt
+thomas raven,1,8.txt
+john davies,2,8.txt
+davies,1,8.txt
+babingtons blennerhassets bartons flowerdews parkes,1,8.txt
+mcclelland,1,8.txt
+stewart,3,8.txt
+adair shaw,1,8.txt
+murray,1,8.txt
+tyrone richardson stewart,1,8.txt
+erskine,1,8.txt
+dunbar,1,8.txt
+hamilton down balfour,1,8.txt
+gaeltacht,2,8.txt
+donaghadee,1,8.txt
+gregg,1,8.txt
+james ii,1,8.txt
+william of orange,1,8.txt
+william,3,8.txt
+bri,1,8.txt
+amon g,1,8.txt
+ian paisley,1,8.txt
+wil liam,1,8.txt
+tha gly tism,1,8.txt
+paula devine,1,8.txt
+john tem,1,8.txt
+raymond gillepsie,1,8.txt
+john mccavitt,2,8.txt
+nta,1,8.txt
+nic,1,8.txt
+kells,1,8.txt
+athenry,2,8.txt
+norman,5,8.txt
+kerry,1,8.txt
+the earl,1,8.txt
 henry grattan,2,10.txt
 daniel o’connell,1,10.txt
 isaac butt,1,10.txt
@@ -362,63 +422,46 @@ adams,1,26.txt
 kd,1,26.txt
 clinton,1,26.txt
 george mitchell,1,26.txt
-lea,1,8.txt
-james,8,8.txt
-hamilton,5,8.txt
-desmond tralee kerry,1,8.txt
-taoiseach,1,8.txt
-tudor,1,8.txt
-henry vii,1,8.txt
-henry viii,2,8.txt
-edward vi,2,8.txt
-mary,3,8.txt
-elizabeth,5,8.txt
-crown,1,8.txt
-stuarts,2,8.txt
-margaret m. james iv,1,8.txt
-tudors,1,8.txt
-james vi,2,8.txt
-james i of,1,8.txt
-fitzgeralds,1,8.txt
-munster,3,8.txt
-oliver cromwell,1,8.txt
-hugh o’neill,1,8.txt
-earl,1,8.txt
-philip ii,1,8.txt
-ople,1,8.txt
-lough,1,8.txt
-foyle,1,8.txt
-thomas raven,1,8.txt
-john davies,2,8.txt
-davies,1,8.txt
-babingtons blennerhassets bartons flowerdews parkes,1,8.txt
-mcclelland,1,8.txt
-stewart,3,8.txt
-adair shaw,1,8.txt
-murray,1,8.txt
-tyrone richardson stewart,1,8.txt
-erskine,1,8.txt
-dunbar,1,8.txt
-hamilton down balfour,1,8.txt
-gaeltacht,2,8.txt
-donaghadee,1,8.txt
-gregg,1,8.txt
-james ii,1,8.txt
-william of orange,1,8.txt
-william,3,8.txt
-bri,1,8.txt
-amon g,1,8.txt
-ian paisley,1,8.txt
-wil liam,1,8.txt
-tha gly tism,1,8.txt
-paula devine,1,8.txt
-john tem,1,8.txt
-raymond gillepsie,1,8.txt
-john mccavitt,2,8.txt
-nta,1,8.txt
-nic,1,8.txt
-kells,1,8.txt
-athenry,2,8.txt
-norman,5,8.txt
-kerry,1,8.txt
-the earl,1,8.txt
+st patrick,5,3.txt
+kells,1,3.txt
+skellig michael,2,3.txt
+st ciaran,2,3.txt
+ee     ut,1,3.txt
+sr es rey em ere visit,1,3.txt
+lu,1,3.txt
+ket,1,3.txt
+domnach,1,3.txt
+patrick,3,3.txt
+ai patrick,1,3.txt
+downpatricks,1,3.txt
+terryglass glerydalough,1,3.txt
+inisfallen tulismore,1,3.txt
+saa st patrick,1,3.txt
+jeceee cece eeeeeeteeeeeeee ent eee eee eee,1,3.txt
+st patrick's confession 1,1,3.txt
+calpornius,1,3.txt
+aman,1,3.txt
+ca ung,1,3.txt
+od ae,1,3.txt
+st ita,1,3.txt
+st brigid,1,3.txt
+st brendan,1,3.txt
+st enda,1,3.txt
+stout,1,3.txt
+st patrick st patrick,1,3.txt
+st patrick confession,1,3.txt
+st patrick,1,3.txt
+saint patrick confession,1,3.txt
+collins,1,3.txt
+ray elolo,1,3.txt
+nia thom,1,3.txt
+el,1,3.txt
+rua ere oo,1,3.txt
+se,1,3.txt
+beene,1,3.txt
+nature ot fl,1,3.txt
+ee oe aan,1,3.txt
+sb oso,1,3.txt
+michael clonmacnoise,1,3.txt
+u sei aon,1,3.txt
+excavations,1,3.txt
