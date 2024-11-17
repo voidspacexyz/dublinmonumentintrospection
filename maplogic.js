@@ -40,7 +40,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 const monuments = [];
-fetch("/sourcedata.csv")
+fetch("sourcedata.csv")
   .then((response) => response.text())
   .then((data) => {
     // Parse the CSV data
